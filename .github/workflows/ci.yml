@@ -12,5 +12,5 @@ jobs:
     - name: Run python unit tests
       run: |
         pip install selenium
-        python3 test.py
         pip install chromedriver-py
+        python3 test.py
