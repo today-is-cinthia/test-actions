@@ -1,13 +1,18 @@
-import os
-import pathlib
-import unittest
 from selenium import webdriver
-from selenium.webdriver.common.by import By  # Importar la clase By para los nuevos métodos
+from selenium.webdriver.chrome.options import Options
+
+# Configura opciones de Chrome
+chrome_options = Options()
+chrome_options.add_argument("--headless")  # Ejecuta Chrome en modo headless (sin interfaz gráfica)
+chrome_options.add_argument("--no-sandbox")  # Evita problemas de permisos en contenedores
+chrome_options.add_argument("--disable-dev-shm-usage")  # Evita problemas de uso de memoria compartida en entornos con poco espacio
+
+# Inicializa el ChromeDriver con las opciones
+driver = webdriver.Chrome(options=chrome_options)
 
 def file_uri(filename):
     return pathlib.Path(os.path.abspath(filename)).as_uri()
 
-driver = webdriver.Chrome()
 
 class WebpageTests(unittest.TestCase):
 
